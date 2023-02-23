@@ -1,0 +1,151 @@
+@font-face {
+    font-family:"Lato-Light";
+    src: url("Lato-Light.ttf") format("truetype");
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {    
+    font-family:"Lato-Light";
+    text-transform: uppercase;
+    font-size: calc(10px + 2vh);
+    color:rgb(125, 125, 125);
+    background: linear-gradient(90deg, rgb(247, 247, 247) 0%, rgb(247, 247, 247) 50%, rgb(255, 255, 255) 50%, rgb(255, 255, 255) 100%);
+}
+
+body, section, .dice, .player {
+    display: flex;
+    flex-direction:column;
+}
+
+header {
+    height: 10vh;
+    padding: 2vh;
+}
+
+.dice {
+    flex-direction: row;
+    justify-content:space-evenly;
+    align-items: center;
+    height:20vh;
+}
+
+.player {
+    height: 35vh;
+    align-items: center;
+}
+
+.player-txt {
+    margin:0;
+    font-size: 5vh;
+}
+
+.score-txt {
+    margin:2vh;
+    font-size: 6vh;
+    color:rgb(237, 77, 67);
+}
+
+.icon, .text-red {
+    color:rgb(237, 77, 67);
+}
+
+.icon {
+    margin:0;
+    font-size: calc(10px + 2vh);
+}
+
+.text-min {
+    margin:0;
+    font-size: calc(8px + 1vh);
+}
+
+.text-white {
+    color:white;
+}
+
+.text-black {
+    color:black;
+}
+
+.dice-face {
+    box-shadow: 0px 0px 20px hsla(0, 0%, 0%, 0.2);
+}
+
+.round {
+    display:block;
+    background-color: rgb(237, 77, 67);
+    padding-top:4px;
+    padding-bottom: 4px;
+    width:30vw;
+}
+
+@media (min-width:480px) {
+    .round {
+        width:20vw;
+    }
+}
+
+@media (min-width:768px) {
+    section {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .round {
+        width:14vw;
+    }
+    .player {
+        height:70vh;
+        margin-top:6vh;
+    }
+    .dice-face {
+        width:8%;
+        height:auto;
+        position:absolute;
+        top:38%;
+        left:50%;
+        transform: translate(-50%, -50%);
+    }
+    .dice {
+        flex-direction: column;        
+    }
+    .score-txt {
+        margin-top:4vh;
+        margin-bottom: 18vh;
+        font-size: 12vh;
+    }
+    .button-roll, .button-hold {
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        white-space: nowrap;
+    }
+    .button-roll {
+        margin-top: 40vh;
+    }
+    .icon, .button-text {
+        font-size: 3.5vh;
+    }
+}
+
+@media (min-width:1024px) {
+    body {
+        width:60vw;
+        margin:auto;
+    }
+    .round {
+        width:10vw;
+    }
+}
+
+@media (min-width:1600px) {
+    .round {
+        width:8vw;
+    }
+}
