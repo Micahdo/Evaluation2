@@ -1,6 +1,11 @@
 @font-face {
     font-family:"Lato-Light";
-    src: url("Lato-Light.ttf") format("truetype");
+    src: url("Lato-Light.ttf");
+}
+
+@font-face {
+    font-family: "Lato-Bold";
+    src: url("Lato-Bold.ttf");
 }
 
 html, body {
@@ -51,13 +56,18 @@ header {
     color:rgb(237, 77, 67);
 }
 
-.icon, .text-red {
-    color:rgb(237, 77, 67);
-}
-
 .icon {
+    color:rgb(237, 77, 67);
     margin:0;
     font-size: calc(10px + 2vh);
+}
+
+.active-player {
+    color:rgb(237, 77, 67);
+    font-size: calc(10px + 1vh);
+    position:relative;
+    right:-15px;
+    top:-10px;
 }
 
 .text-min {
@@ -70,6 +80,7 @@ header {
 }
 
 .text-black {
+    font-family: "Lato-Bold";
     color:black;
 }
 
@@ -113,7 +124,8 @@ header {
         transform: translate(-50%, -50%);
     }
     .dice {
-        flex-direction: column;        
+        flex-direction: column;
+
     }
     .score-txt {
         margin-top:4vh;
@@ -131,6 +143,9 @@ header {
     }
     .icon, .button-text {
         font-size: 3.5vh;
+    }
+    .circle {
+        font-size: calc(14px + 1vh);
     }
 }
 

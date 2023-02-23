@@ -12,13 +12,14 @@
 <body>    
     <main class="text-center container">
         <header>
-            <i class="bi-plus-circle text-red icon btn" id="new-button"></i>
+            <i class="bi-plus-circle icon btn" id="new-button"></i>
             <span>new game</span>
         </header>
         <section>
             <article class="player">
                 <div>
-                    <p class="player-txt" id="player1">player 1</p>
+                    <span class="player-txt" id="player1">player 1</span>
+                    <i class="bi-circle-fill active-player" id="active-player1"></i>
                 </div>
                 <div>
                     <p class="score-txt" id="global1">0</p>
@@ -30,20 +31,21 @@
             </article>
             <article class="dice row-cols-3">
                 <div class="button-roll">
-                    <i class="bi-arrow-repeat text-red icon btn" id="roll-button"></i>
+                    <i class="bi-arrow-repeat icon btn" id="roll-button"></i>
                     <p class="text-min button-text">roll dice</p>
                 </div>
                 <div class="dice-img">
                     <img src="Images/0.png" alt="dice" class="dice-face" width="40%" height="auto" id="dice-face">
                 </div>
                 <div class="button-hold">
-                    <i class="bi-box-arrow-in-down text-red icon btn" id="hold-button"></i>
+                    <i class="bi-box-arrow-in-down icon btn" id="hold-button"></i>
                     <p class="text-min button-text">hold</p>
                 </div>
             </article>
             <article class="player">
                 <div>
-                    <p class="player-txt" id="player2">player 2</p>
+                    <span class="player-txt" id="player2">player 2</span>
+                    <i class="bi-circle-fill active-player" id="active-player2"></i>
                 </div>
                 <div>
                     <p class="score-txt" id="global2">0</p>
