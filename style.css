@@ -3,7 +3,6 @@
     src: url("Lato-Light.ttf");
 }
 
-
 html, body {
     height: 100%;
     width: 100%;
@@ -43,7 +42,7 @@ header {
 
 .player-txt {
     margin:0;
-    font-size: 5vh;
+    font-size: 4vh;
 }
 
 .score-txt {
@@ -84,7 +83,7 @@ header {
     box-shadow: 0px 0px 20px hsla(0, 0%, 0%, 0.2);
 }
 
-.round {
+.current {
     display:block;
     background-color: rgb(237, 77, 67);
     padding-top:4px;
@@ -92,8 +91,21 @@ header {
     width:30vw;
 }
 
+.animateDice {
+    animation: animate 1s;
+}
+
+@keyframes animate {
+    0%{
+      transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(360deg);
+    }
+  }
+
 @media (min-width:480px) {
-    .round {
+    .current {
         width:20vw;
     }
 }
@@ -104,15 +116,15 @@ header {
         justify-content: space-between;
         align-items: center;
     }
-    .round {
+    .current {
         width:14vw;
     }
     .player {
         height:70vh;
         margin-top:6vh;
     }
-    .dice-face {
-        width:8%;
+    .dice-img {
+        width:20%;
         height:auto;
         position:absolute;
         top:38%;
@@ -121,7 +133,6 @@ header {
     }
     .dice {
         flex-direction: column;
-
     }
     .score-txt {
         margin-top:4vh;
@@ -143,6 +154,9 @@ header {
     .circle {
         font-size: calc(14px + 1vh);
     }
+    .player-txt {
+        font-size: 4.5vh;
+    }
 }
 
 @media (min-width:1024px) {
@@ -150,13 +164,16 @@ header {
         width:60vw;
         margin:auto;
     }
-    .round {
+    .current {
         width:10vw;
+    }
+    .player-txt {
+        font-size: 5vh;
     }
 }
 
 @media (min-width:1600px) {
-    .round {
+    .current {
         width:8vw;
     }
 }
