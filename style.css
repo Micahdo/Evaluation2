@@ -3,10 +3,6 @@
     src: url("Lato-Light.ttf");
 }
 
-@font-face {
-    font-family: "Lato-Bold";
-    src: url("Lato-Bold.ttf");
-}
 
 html, body {
     height: 100%;
@@ -80,7 +76,7 @@ header {
 }
 
 .text-black {
-    font-family: "Lato-Bold";
+    font-weight: bold;
     color:black;
 }
 
