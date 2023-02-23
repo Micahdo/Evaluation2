@@ -11,9 +11,9 @@ let player1 = document.getElementById("player1");
 let player2 = document.getElementById("player2");
 let global1 = document.getElementById("global1");
 let global2 = document.getElementById("global2");
+let activePlayer = 0;
 
 /*Nouveau jeu*/
-let activePlayer = 0;
 newButton.addEventListener("click", function() {
     global1.innerHTML = 0;
     global2.innerHTML = 0;
@@ -44,13 +44,35 @@ let result = 0;
 rollButton.addEventListener("click", function() {
     result = Math.floor(Math.random()*6)+1;
     diceImage.setAttribute("src", "Images/" + result + ".png");
-    if (result > 1) {
+    if (result > 1 && activePlayer == 1) {
         current1.innerHTML = result + Number(current1.innerText);
-    } else {
+    } else if (result == 1 && activePlayer == 1) {
         current1.innerHTML = 0;
-    }    
+        activePlayer = 2;
+        playerTurn();
+    } else if (result > 1 && activePlayer == 2) {
+        current2.innerHTML = result + Number(current2.innerText);
+    } else if (result == 1 && activePlayer == 2) {
+        current2.innerHTML = 0;
+        activePlayer = 1;
+        playerTurn();
+    }
 })
 
+/*Conservation du résultat*/
+holdButton.addEventListener("click", function() {
+    if (activePlayer == 1) {
+        global1.innerHTML = Number(global1.innerText) + Number(current1.innerText);
+        current1.innerHTML = 0;
+        activePlayer = 2;
+        playerTurn();
+    } else {
+        global2.innerHTML = Number(global2.innerText) + Number(current2.innerText);
+        current2.innerHTML = 0;
+        activePlayer = 1;
+        playerTurn();
+    }
+})
 
 
 
