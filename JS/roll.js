@@ -18,7 +18,7 @@ let message2 = document.getElementById("message2");
 let activePlayer = 0;
 
 /*Joueur actif*/
-function playerTurn() {
+playerTurn = () => {
     if (activePlayer == 1) {
         /*Initialisation du joueur 1 comme joueur actif*/
         activePlayer1.style.opacity = "1";
@@ -35,15 +35,15 @@ function playerTurn() {
 }
 
 /*Animation du dé*/
-function animationDice() {
+animationDice = () => {
     diceImage.classList.add("animateDice");
-    setTimeout(function(){
+    setTimeout(() => {
         diceImage.classList.remove("animateDice")
     }, 1000)
 }
 
 /*Ouverture de la popup*/
-function openPopup() {
+openPopup = () => {
     let winnerResult;
     if (activePlayer == 1) {
         winnerResult = Number(global1.innerText);
@@ -56,19 +56,19 @@ function openPopup() {
 }
 
 /*Fermeture de la popup*/
-function closePopup() {
+closePopup = () => {
     popup.classList.remove("open-popup");
     initialize();
 }
 
 /*Choix aléatoire du premier joueur*/
-function randomPlayer() {
+randomPlayer = () => {
     activePlayer = Math.floor(Math.random()*2)+1;
     playerTurn();
 }
 
 /*Initialisation*/
-function initialize() {
+initialize = () => {
     global1.innerHTML = 0;
     global2.innerHTML = 0;
     round1.innerHTML = 0;
@@ -77,14 +77,14 @@ function initialize() {
 }
 
 /*Nouveau jeu*/
-newButton.addEventListener("click", function() {
+newButton.addEventListener("click", () => {
     initialize();
     randomPlayer();
 })
 
 /*Jet du dé à 6 faces*/
 let result = 0;
-rollButton.addEventListener("click", function() {
+rollButton.addEventListener("click", () => {
     /*Lancement de l'animation du dé*/
     animationDice();
     /*Résultat aléatoire*/
@@ -111,11 +111,11 @@ rollButton.addEventListener("click", function() {
 })
 
 /*Conservation du résultat*/
-holdButton.addEventListener("click", function() {
+holdButton.addEventListener("click", () => {
     if (activePlayer == 1) {
         /*Le résultat de round1 passe dans global1*/
         global1.innerHTML = Number(global1.innerText) + Number(round1.innerText);
-        if (Number(global1.innerText) >= 5 ) {
+        if (Number(global1.innerText) >= 100 ) {
             /*Remise à 0 de round1*/
             round1.innerHTML = 0;
             openPopup();
@@ -129,7 +129,7 @@ holdButton.addEventListener("click", function() {
     } else {
         /*Le résultat de round2 passe dans global2*/
         global2.innerHTML = Number(global2.innerText) + Number(round2.innerText);
-        if (Number(global2.innerText) >= 5 ) {
+        if (Number(global2.innerText) >= 100 ) {
             /*Remise à 0 de round2*/
             round2.innerHTML = 0;
             openPopup();
