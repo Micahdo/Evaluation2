@@ -91,6 +91,7 @@ header {
     width:30vw;
 }
 
+/*Animation du dé - rotation de 360 degrés*/
 .animateDice {
     animation: animate 1s;
 }
@@ -104,9 +105,54 @@ header {
     }
   }
 
+/*Fenêtre popup*/
+.popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(247, 247, 247);
+    width:70vw;
+    height:30vh;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    padding:1vh;
+    font-size:2.5vh;
+    font-weight: 900;
+    color:rgb(125, 125, 125);
+    box-shadow: 0px 0px 20px hsla(0, 0%, 0%, 0.2);
+    visibility:hidden;
+    transition: transform 1s;
+}
+
+.open-popup {
+    visibility:visible;
+    transform:translate(-50%, -50%) scale(1);
+}
+
+.btn-ok {
+    background-color: rgb(237, 77, 67);
+    width:40vw;
+    border:0;
+    border-radius:3vh;
+    font-size:3vh;
+    font-weight:900;
+    color:white;
+}
+
+/*Media queries - changements à 480px, 768px, 1024px, 1600px*/
 @media (min-width:480px) {
     .current {
         width:20vw;
+    }
+    .popup {
+        font-size: 2.8vh;
+    }
+    .btn-ok {
+        width:30vw;
     }
 }
 
@@ -157,6 +203,12 @@ header {
     .player-txt {
         font-size: 4.5vh;
     }
+    .popup {
+        font-size: 3.1vh;
+    }
+    .btn-ok {
+        width:20vw;
+    }
 }
 
 @media (min-width:1024px) {
@@ -169,6 +221,12 @@ header {
     }
     .player-txt {
         font-size: 5vh;
+    }
+    .popup {
+        width:40vw;
+    }
+    .btn-ok {
+        width:10vw
     }
 }
 

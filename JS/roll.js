@@ -12,6 +12,9 @@ let player2 = document.getElementById("player2");
 let global1 = document.getElementById("global1");
 let global2 = document.getElementById("global2");
 let diceImg = document.getElementById("dice-img");
+let popup = document.getElementById("popup");
+let message1 = document.getElementById("message1");
+let message2 = document.getElementById("message2");
 let activePlayer = 0;
 
 /*Joueur actif*/
@@ -39,18 +42,44 @@ function animationDice() {
     }, 1000)
 }
 
-/*Nouveau jeu*/
-newButton.addEventListener("click", function() {
-    /*Mise à 0 des boîtes round et global*/
+/*Ouverture de la popup*/
+function openPopup() {
+    let winnerResult;
+    if (activePlayer == 1) {
+        winnerResult = Number(global1.innerText);
+    } else {
+        winnerResult = Number(global2.innerText);
+    }
+    popup.classList.add("open-popup");
+    message1.textContent = "Bravo Player" + activePlayer + " !";
+    message2.textContent = "Vous avez gagné avec " + winnerResult + " points !";
+}
+
+/*Fermeture de la popup*/
+function closePopup() {
+    popup.classList.remove("open-popup");
+    initialize();
+}
+
+/*Choix aléatoire du premier joueur*/
+function randomPlayer() {
+    activePlayer = Math.floor(Math.random()*2)+1;
+    playerTurn();
+}
+
+/*Initialisation*/
+function initialize() {
     global1.innerHTML = 0;
     global2.innerHTML = 0;
     round1.innerHTML = 0;
     round2.innerHTML = 0;
-    /*Chargement de l'image du dé par défaut*/
     diceImage.setAttribute("src", "Images/0.png");
-    /*Choix aléatoire du premier joueur*/
-    activePlayer = Math.floor(Math.random()*2)+1;
-    playerTurn();
+}
+
+/*Nouveau jeu*/
+newButton.addEventListener("click", function() {
+    initialize();
+    randomPlayer();
 })
 
 /*Jet du dé à 6 faces*/
@@ -78,6 +107,7 @@ rollButton.addEventListener("click", function() {
         activePlayer = 1;        
         playerTurn();
     }
+
 })
 
 /*Conservation du résultat*/
@@ -85,18 +115,30 @@ holdButton.addEventListener("click", function() {
     if (activePlayer == 1) {
         /*Le résultat de round1 passe dans global1*/
         global1.innerHTML = Number(global1.innerText) + Number(round1.innerText);
-        /*Remise à 0 de round1*/
-        round1.innerHTML = 0;
-        /*Changement de joueur*/
-        activePlayer = 2;
-        playerTurn();
+        if (Number(global1.innerText) >= 5 ) {
+            /*Remise à 0 de round1*/
+            round1.innerHTML = 0;
+            openPopup();
+        } else {
+            /*Remise à 0 de round1*/
+            round1.innerHTML = 0;
+            /*Changement de joueur*/
+            activePlayer = 2;
+            playerTurn();
+        }
     } else {
         /*Le résultat de round2 passe dans global2*/
         global2.innerHTML = Number(global2.innerText) + Number(round2.innerText);
+        if (Number(global2.innerText) >= 5 ) {
+            /*Remise à 0 de round2*/
+            round2.innerHTML = 0;
+            openPopup();
+        } else {
         /*Remise à 0 de round2*/
         round2.innerHTML = 0;
         /*Changement de joueur*/
         activePlayer = 1;
         playerTurn();
+        }
     }
 })
